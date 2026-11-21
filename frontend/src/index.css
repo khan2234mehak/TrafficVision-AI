@@ -1,0 +1,39 @@
+@import "leaflet/dist/leaflet.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, [data-theme="dark"] {
+  --bg: 8 13 26; --surface: 14 22 40; --raised: 22 34 58; --line: 38 54 86;
+  --ink: 230 238 249; --muted: 138 156 186; --brand: 59 130 255; --cyan: 34 211 238;
+  --ok: 52 211 153; --warn: 251 191 36; --danger: 248 113 113; --orange: 251 146 60;
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: 240 244 250; --surface: 255 255 255; --raised: 234 240 249; --line: 205 215 232;
+  --ink: 16 27 48; --muted: 90 107 135; --brand: 30 99 235; --cyan: 8 145 178;
+  --ok: 5 150 105; --warn: 202 138 4; --danger: 220 38 38; --orange: 234 88 12;
+  color-scheme: light;
+}
+html, body, #root { height: 100%; }
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  background-image: radial-gradient(1100px 520px at 85% -10%, rgb(var(--brand) / .14), transparent 60%),
+                    radial-gradient(800px 420px at -5% 105%, rgb(var(--cyan) / .08), transparent 60%);
+  background-attachment: fixed;
+}
+h1, h2, h3 { @apply font-display; letter-spacing: -0.01em; }
+.font-display { letter-spacing: -0.01em; }
+.num { font-variant-numeric: tabular-nums; }
+.panel { @apply rounded-2xl border border-line/70 bg-surface/90 shadow-panel; }
+.glass { @apply rounded-2xl border border-line/60 backdrop-blur-xl; background: rgb(var(--surface) / .62); }
+*:focus-visible { outline: 2px solid rgb(var(--cyan)); outline-offset: 2px; border-radius: 6px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--line)); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+.leaflet-container { background: rgb(var(--raised)); font-family: inherit; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgb(var(--surface)); color: rgb(var(--ink)); border: 1px solid rgb(var(--line)); }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; @apply rounded-lg bg-raised; }
+.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(var(--ink) / .07), transparent); animation: shimmer 1.4s infinite; }
+@media (prefers-reduced-motion: reduce) { .skeleton::after { animation: none; } * { scroll-behavior: auto !important; } }

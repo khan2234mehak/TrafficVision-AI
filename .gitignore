@@ -1,0 +1,35 @@
+# secrets / local config
+.env
+*.env.local
+backend/data/
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+# model weights are downloaded by scripts/download_weights.py
+backend/models/*.pt
+backend/models/*.onnx
+# node
+node_modules/
+frontend/dist/
+# media
+sample_data/*.mp4
+sample_data/*.avi
+sample_data/*.mov
+# os / editor
+.DS_Store
+Thumbs.db
+# local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# logs and temporary files
+*.log
+*.tmp
+
+# test and coverage
+.coverage
+htmlcov/

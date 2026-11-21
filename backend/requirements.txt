@@ -1,0 +1,21 @@
+# TrafficVision AI - backend dependencies (tested with Python 3.10 - 3.12)
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+SQLAlchemy==2.0.36
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-multipart==0.0.19
+bcrypt==4.2.1
+PyJWT==2.10.1
+psycopg[binary]==3.2.3
+reportlab==4.2.5
+psutil==6.1.0
+imageio-ffmpeg==0.5.1
+
+# Computer vision
+numpy>=1.26,<2.3
+opencv-python>=4.10,<4.12
+supervision==0.25.1
+ultralytics>=8.3.0,<8.4
+# torch / torchvision are installed automatically by ultralytics (CPU build on Windows).
+# For NVIDIA GPU support see README.md -> "GPU acceleration".
