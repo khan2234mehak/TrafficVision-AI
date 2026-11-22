@@ -1,25 +1,15 @@
-# Render blueprint: one Docker web service that serves the API and the built frontend.
-# Note: Render's free tier has no GPU and limited CPU/RAM - fine for demos and short videos.
+# Render blueprint (free plan demo). One Docker service serves the API and the UI.
 services:
   - type: web
     name: trafficvision-ai
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    plan: free
+    dockerfilePath: ./Dockerfile.render
     healthCheckPath: /api/health
     envVars:
       - key: ENVIRONMENT
         value: production
       - key: SECRET_KEY
         generateValue: true
-      - key: DATABASE_URL        # paste a Render PostgreSQL "Internal Database URL" converted to postgresql+psycopg://...
-        sync: false
-      - key: CORS_ORIGINS
-        value: https://your-frontend.vercel.app
-      - key: DEMO_ADMIN_PASSWORD
-        sync: false
-      - key: DEMO_OPERATOR_PASSWORD
-        sync: false
-    disk:
-      name: trafficvision-data
-      mountPath: /app/backend/data
-      sizeGB: 5
+      - key: SEED_DEMO_DATA
+        value: "true"
